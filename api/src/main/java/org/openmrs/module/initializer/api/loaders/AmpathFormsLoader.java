@@ -56,6 +56,7 @@ public class AmpathFormsLoader extends BaseFileLoader {
 		}
 		
 		String formDescription = (String) jsonFile.get("description");
+		String formUuid = (String) jsonFile.get("uuid");
 		boolean formPublished = (Boolean) jsonFile.get("published");
 		boolean formRetired = (Boolean) jsonFile.get("retired");
 		
@@ -86,19 +87,53 @@ public class AmpathFormsLoader extends BaseFileLoader {
 		String uuid = Utils.generateUuidFromObjects(AMPATH_FORMS_UUID, formName, formVersion);
 		// Process Form
 		// ISSUE-150 If form with uuid present then update it
-		if (formService.getFormByUuid(uuid) != null) {
-			Form form = formService.getFormByUuid(uuid);
+		if (formService.getFormByUuid(formUuid) != null) {
+			Form form = formService.getFormByUuid(formUuid);
 			
-			if (OpenmrsUtil.nullSafeEquals(form.getUuid(), uuid)) {
+			if (OpenmrsUtil.nullSafeEquals(form.getUuid(), formUuid)) {
+
+				//KenyaEMR resource name for html forms is hffeXMPath
+				FormResource formRes = formService.getFormResource(form, "hfeXmlPath");
+				if (formRes != null) {
+					//Retrievet the form resource and update with the JSON schema and create clob data.
+					
+					String clobUuid = UUID.randomUUID().toString();
+					formRes.setName("JSON schema");
+					formRes.setValueReferenceInternal(clobUuid);
+					//formRes.setDatatypeClassname("AmpathJsonSchema");
+					formService.saveFormResource(formRes);
+					
+					ClobDatatypeStorage newClobData = new ClobDatatypeStorage();
+					newClobData.setUuid(clobUuid);
+					newClobData.setValue(jsonString);
+					datatypeService.saveClobDatatypeStorage(newClobData);
+					
+				}
+				
 				ClobDatatypeStorage clobData = datatypeService
 				        .getClobDatatypeStorageByUuid(formService.getFormResource(form, "JSON schema").getValueReference());
-				clobData.setValue(jsonString);
-				datatypeService.saveClobDatatypeStorage(clobData);
+				if (clobData != null) {
+					clobData.setValue(jsonString);
+					datatypeService.saveClobDatatypeStorage(clobData);
+					
+				}
 				
 				boolean needToSaveForm = false;
 				// Description
 				if (!OpenmrsUtil.nullSafeEquals(form.getDescription(), formDescription)) {
 					form.setDescription(formDescription);
+					needToSaveForm = true;
+				}
+				
+				// uuid
+				if (!OpenmrsUtil.nullSafeEquals(form.getUuid(), formUuid)) {
+					form.setUuid(formUuid);
+					needToSaveForm = true;
+				}
+				
+				// name
+				if (!OpenmrsUtil.nullSafeEquals(form.getName(), formName)) {
+					form.setName(formName);
 					needToSaveForm = true;
 				}
 				// Version
@@ -135,10 +170,10 @@ public class AmpathFormsLoader extends BaseFileLoader {
 		                                                    // create a new one
 			Form form = formService.getForm(formName);
 			formService.retireForm(form, "Replaced with new version by Iniz");
-			createNewForm(uuid, formName, formDescription, formPublished, formRetired, encounterType, formVersion,
+			createNewForm(formUuid, formName, formDescription, formPublished, formRetired, encounterType, formVersion,
 			    jsonString);
 		} else {// ISSUE-150 Create new form
-			createNewForm(uuid, formName, formDescription, formPublished, formRetired, encounterType, formVersion,
+			createNewForm(formUuid, formName, formDescription, formPublished, formRetired, encounterType, formVersion,
 			    jsonString);
 		}
 	}
