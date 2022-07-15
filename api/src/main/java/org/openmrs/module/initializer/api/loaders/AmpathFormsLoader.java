@@ -91,30 +91,35 @@ public class AmpathFormsLoader extends BaseFileLoader {
 			Form form = formService.getFormByUuid(formUuid);
 			
 			if (OpenmrsUtil.nullSafeEquals(form.getUuid(), formUuid)) {
-
-				//KenyaEMR resource name for html forms is hffeXMPath
-				FormResource formRes = formService.getFormResource(form, "hfeXmlPath");
+				
+				// KenyaEMR resource name for html forms is hffeXMPath
+				FormResource formRes = formService.getFormResource(form, "JSON schema");
 				if (formRes != null) {
-					//Retrievet the form resource and update with the JSON schema and create clob data.
+					// Retrievet the form resource and update with the JSON schema and create clob
+					// data.
 					
+					ClobDatatypeStorage clobData = datatypeService.getClobDatatypeStorageByUuid(formService.getFormResource(
+					    form, "JSON schema").getValueReference());
+					if (clobData != null) {
+						clobData.setValue(jsonString);
+						datatypeService.saveClobDatatypeStorage(clobData);
+						
+					}
+					
+				} else {
 					String clobUuid = UUID.randomUUID().toString();
-					formRes.setName("JSON schema");
-					formRes.setValueReferenceInternal(clobUuid);
-					//formRes.setDatatypeClassname("AmpathJsonSchema");
-					formService.saveFormResource(formRes);
+					FormResource formResource;
+					formResource = new FormResource();
+					formResource.setName("JSON schema");
+					formResource.setForm(form);
+					formResource.setValueReferenceInternal(clobUuid);
+					formResource.setDatatypeClassname("AmpathJsonSchema");
+					formService.saveFormResource(formResource);
 					
 					ClobDatatypeStorage newClobData = new ClobDatatypeStorage();
 					newClobData.setUuid(clobUuid);
 					newClobData.setValue(jsonString);
 					datatypeService.saveClobDatatypeStorage(newClobData);
-					
-				}
-				
-				ClobDatatypeStorage clobData = datatypeService
-				        .getClobDatatypeStorageByUuid(formService.getFormResource(form, "JSON schema").getValueReference());
-				if (clobData != null) {
-					clobData.setValue(jsonString);
-					datatypeService.saveClobDatatypeStorage(clobData);
 					
 				}
 				
@@ -167,7 +172,7 @@ public class AmpathFormsLoader extends BaseFileLoader {
 				}
 			}
 		} else if (formService.getForm(formName) != null) { // ISSUE-150 If form with name present then retire it and
-		                                                    // create a new one
+			                                                // create a new one
 			Form form = formService.getForm(formName);
 			formService.retireForm(form, "Replaced with new version by Iniz");
 			createNewForm(formUuid, formName, formDescription, formPublished, formRetired, encounterType, formVersion,
