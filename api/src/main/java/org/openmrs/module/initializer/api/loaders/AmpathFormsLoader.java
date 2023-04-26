@@ -67,15 +67,15 @@ public class AmpathFormsLoader extends BaseFileLoader {
 		EncounterType encounterType = null;
 		String formEncounterType = (String) jsonFile.get("encounter");
 		String formEncounterTypeUuid = (String) jsonFile.get("encounterType");
+		// commenting out for now. This part processes forms using encounter name.
 		
-		if (formEncounterType != null) {
-			encounterType = encounterService.getEncounterType(formEncounterType);
-			if (encounterType == null) {
-				throw new Exception("Form Encounter type " + formEncounterType + " could not be found. Please ensure that "
-				        + "this encountertype is either loaded by Iniz or loaded in the system before Iniz runs.");
-			}
-		}
-		
+		// if (formEncounterType != null) {
+		// 	encounterType = encounterService.getEncounterType(formEncounterType);
+		// 	if (encounterType == null) {
+		// 		throw new Exception("Form Encounter type " + formEncounterType + " could not be found. Please ensure that "
+		// 		        + "this encountertype is either loaded by Iniz or loaded in the system before Iniz runs.");
+		// 	}
+		// } 
 		if (formEncounterTypeUuid != null) {
 			encounterType = encounterService.getEncounterTypeByUuid(formEncounterTypeUuid);
 			if (encounterType == null) {
@@ -84,6 +84,9 @@ public class AmpathFormsLoader extends BaseFileLoader {
 				                + "this encountertype is either loaded by Iniz or loaded in the system before Iniz runs.");
 			}
 		}
+		
+		System.out.println("formEncounterTypeUuid ======================" + formEncounterTypeUuid);
+		
 		if (isEncounterForm && encounterType == null) {
 			throw new Exception("No encounter was found for this form. You should have an \"encounter\" entry whose value "
 			        + "is the id of the encounter type to use for this form, e.g., \"encounter\": \"Emergency\".");
