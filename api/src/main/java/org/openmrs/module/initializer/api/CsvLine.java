@@ -74,8 +74,8 @@ public class CsvLine {
 			boolean validUuid = str.length() == 36 || "5089AAAAAAAAAAAAAAAAAAAAAAAAAAAA".equals(str)
 			        || "5090AAAAAAAAAAAAAAAAAAAAAAAAAAAA".equals(str);
 			if (!validUuid) {
-				throw new IllegalArgumentException(
-				        "'" + str + "' did not pass the soft check for being a valid OpenMRS UUID.");
+				throw new IllegalArgumentException("'" + str
+				        + "' did not pass the soft check for being a valid OpenMRS UUID.");
 			}
 			
 			// str = UUID.fromString(str).toString();

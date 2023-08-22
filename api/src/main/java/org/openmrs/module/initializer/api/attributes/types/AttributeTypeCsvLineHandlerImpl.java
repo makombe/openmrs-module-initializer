@@ -19,8 +19,8 @@ public class AttributeTypeCsvLineHandlerImpl implements AttributeTypeCsvLineHand
 		String attributeDomain = line.get(HEADER_ENTITY_NAME, true);
 		AttributeTypeEntity type = getType(attributeDomain);
 		if (type == null) {
-			throw new IllegalArgumentException(
-			        "No attribute type domain could be guessed from the CSV line:" + line.toString());
+			throw new IllegalArgumentException("No attribute type domain could be guessed from the CSV line:"
+			        + line.toString());
 		}
 		return type;
 	}

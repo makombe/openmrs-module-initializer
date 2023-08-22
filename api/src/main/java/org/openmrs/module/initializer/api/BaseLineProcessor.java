@@ -81,8 +81,8 @@ public abstract class BaseLineProcessor<T extends OpenmrsObject> {
 		int col = 0;
 		for (String header : headerLine) {
 			if (indexMap.containsKey(header.trim().toLowerCase())) {
-				throw new IllegalArgumentException(
-				        "The CSV header line cannot contains twice the same header: '" + header + "'");
+				throw new IllegalArgumentException("The CSV header line cannot contains twice the same header: '" + header
+				        + "'");
 			}
 			indexMap.put(header.trim().toLowerCase(), col);
 			col++;
@@ -128,8 +128,8 @@ public abstract class BaseLineProcessor<T extends OpenmrsObject> {
 			}
 		}
 		if (count > 1) {
-			throw new IllegalArgumentException(
-			        "The CSV header line contains multiple fields '" + fieldLhs + "': " + headerLine.toString());
+			throw new IllegalArgumentException("The CSV header line contains multiple fields '" + fieldLhs + "': "
+			        + headerLine.toString());
 		}
 		return value;
 	}

@@ -13,6 +13,7 @@ public class OpenConceptLabLoader extends BaseFileLoader {
 	
 	@Override
 	protected Domain getDomain() {
+		System.out.println("Zip===================================");
 		return Domain.OCL;
 	}
 	
@@ -23,8 +24,12 @@ public class OpenConceptLabLoader extends BaseFileLoader {
 	
 	@Override
 	protected void load(File file) throws Exception {
+		System.out.println("Zip===================================33333");
+		
 		ZipFile zip = new ZipFile(file);
 		Importer importer = Context.getRegisteredComponent("openconceptlab.importer", Importer.class);
+		System.out.println("Zip===================================22222");
+		
 		importer.run(zip);
 	}
 	

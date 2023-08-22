@@ -27,9 +27,9 @@ public class OrderedFile extends File {
 			log.warn(e.getMessage());
 		}
 		catch (Exception e) {
-			log.error("There was an error while attempting to read the loading order of a configuration file: "
-			        + this.getAbsolutePath(),
-			    e);
+			log.error(
+			    "There was an error while attempting to read the loading order of a configuration file: "
+			            + this.getAbsolutePath(), e);
 		}
 	}
 	
@@ -41,8 +41,8 @@ public class OrderedFile extends File {
 	 * Override this method to actively fetch the order from a given configuration file. 
 	 */
 	protected Integer fetchOrder(File file) throws Exception {
-		throw new UnsupportedOperationException(
-		        getClass().getSimpleName() + " does not provide an implementation to fetch the loading order from files.");
+		throw new UnsupportedOperationException(getClass().getSimpleName()
+		        + " does not provide an implementation to fetch the loading order from files.");
 	}
 	
 	public Integer getOrder() {

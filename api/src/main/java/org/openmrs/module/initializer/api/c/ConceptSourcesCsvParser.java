@@ -17,8 +17,7 @@ public class ConceptSourcesCsvParser extends CsvParser<ConceptSource, BaseLinePr
 	private ConceptService service;
 	
 	@Autowired
-	public ConceptSourcesCsvParser(@Qualifier("conceptService") ConceptService service,
-	    ConceptSourceLineProcessor processor) {
+	public ConceptSourcesCsvParser(@Qualifier("conceptService") ConceptService service, ConceptSourceLineProcessor processor) {
 		super(processor);
 		this.service = service;
 	}

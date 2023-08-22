@@ -53,12 +53,12 @@ public class FhirConceptSourceCsvParser extends CsvParser<FhirConceptSource, Bas
 				conceptSource = conceptService.getConceptSourceByUniqueId(ref);
 			}
 			if (conceptSource == null) {
-				throw new IllegalArgumentException(
-				        "'concept source '" + ref + "' not found for FHIR concept source " + line.getUuid());
+				throw new IllegalArgumentException("'concept source '" + ref + "' not found for FHIR concept source "
+				        + line.getUuid());
 			}
 		} else {
-			throw new IllegalArgumentException(
-			        "'" + CONCEPT_SOURCE_HEADER + "' is missing from FHIR concept source CSV: " + line.getUuid());
+			throw new IllegalArgumentException("'" + CONCEPT_SOURCE_HEADER + "' is missing from FHIR concept source CSV: "
+			        + line.getUuid());
 		}
 		
 		for (FhirConceptSource fhirConceptSource : fhirConceptSourceService.getFhirConceptSources()) {

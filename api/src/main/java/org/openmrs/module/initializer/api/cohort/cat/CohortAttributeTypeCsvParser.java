@@ -22,8 +22,8 @@ public class CohortAttributeTypeCsvParser extends CsvParser<CohortAttributeType,
 	}
 	
 	/**
-	 * Most CSV parsers are built on a single line processor. This superclass constructor should be used
-	 * to initialize such parsers.
+	 * Most CSV parsers are built on a single line processor. This superclass constructor should be
+	 * used to initialize such parsers.
 	 * 
 	 * @param lineProcessor The single line processor for the CSV parser.
 	 */

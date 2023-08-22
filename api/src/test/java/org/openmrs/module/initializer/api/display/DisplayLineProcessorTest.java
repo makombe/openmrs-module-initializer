@@ -31,8 +31,8 @@ public class DisplayLineProcessorTest {
 	public void fill_shouldParseMessageProperties() {
 		// Setup
 		DisplayLineProcessor processor = new DisplayLineProcessor(msgSource);
-		CsvLine line = new CsvLine(new String[] { "display:en", "display:km" },
-		        new String[] { "display-english", "display-cambodia" });
+		CsvLine line = new CsvLine(new String[] { "display:en", "display:km" }, new String[] { "display-english",
+		        "display-cambodia" });
 		when(instance.getUuid()).thenReturn("display-uuid");
 		
 		// Replay

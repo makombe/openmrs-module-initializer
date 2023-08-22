@@ -43,8 +43,8 @@ public class LocalizedHeader {
 		if (locales.contains(locale)) {
 			return i18nHeader;
 		} else {
-			throw new IllegalArgumentException(
-			        "The header requested was never decorated with the specified locale: '" + i18nHeader + "'");
+			throw new IllegalArgumentException("The header requested was never decorated with the specified locale: '"
+			        + i18nHeader + "'");
 		}
 	}
 	
@@ -91,8 +91,8 @@ public class LocalizedHeader {
 				LocalizedHeader l10nHeader = l10nHeaderMap.get(header);
 				Locale locale = LocaleUtils.toLocale(parts[1]);
 				if (l10nHeader.getLocales().contains(locale)) {
-					throw new IllegalArgumentException(
-					        "The CSV header line cannot contains twice the same header: '" + i18nHeader + "'");
+					throw new IllegalArgumentException("The CSV header line cannot contains twice the same header: '"
+					        + i18nHeader + "'");
 				}
 				l10nHeader.getLocales().add(locale);
 				

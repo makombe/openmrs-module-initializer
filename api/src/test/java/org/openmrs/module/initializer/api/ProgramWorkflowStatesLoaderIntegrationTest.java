@@ -147,8 +147,8 @@ public class ProgramWorkflowStatesLoaderIntegrationTest extends DomainBaseModule
 			ProgramWorkflowState state = pws.getStateByUuid("88b717c0-f580-497a-8d2b-026b60dd6bfd");
 			Assert.assertEquals(Utils.fetchProgramWorkflow("Palliative Care (workflow)", pws, cs),
 			    state.getProgramWorkflow());
-			Assert.assertFalse(
-			    Utils.fetchProgramWorkflow("TB Treatment Status (workflow)", pws, cs).getStates().contains(state));
+			Assert.assertFalse(Utils.fetchProgramWorkflow("TB Treatment Status (workflow)", pws, cs).getStates()
+			        .contains(state));
 		}
 		
 		// state created without UUID

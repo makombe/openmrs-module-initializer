@@ -15,11 +15,11 @@ public abstract class ListParser<T extends BaseOpenmrsObject> {
 	protected final Logger log = LoggerFactory.getLogger(getClass());
 	
 	/**
-	 * There are cases where we might want to ensure that the object that we will attempt to fetch does
-	 * indeed exist. In that case this is the place to process to a last min. save based on whatever
-	 * sufficient information that might be embedded in the identifier. Eg. Assuming the identifier is
-	 * the <i>name</i> of a location tag, this could for example create and save the location tag with
-	 * that name, if none can be found already.
+	 * There are cases where we might want to ensure that the object that we will attempt to fetch
+	 * does indeed exist. In that case this is the place to process to a last min. save based on
+	 * whatever sufficient information that might be embedded in the identifier. Eg. Assuming the
+	 * identifier is the <i>name</i> of a location tag, this could for example create and save the
+	 * location tag with that name, if none can be found already.
 	 * 
 	 * @param id The object string identifier.
 	 * @return The saved object.
@@ -60,9 +60,11 @@ public abstract class ListParser<T extends BaseOpenmrsObject> {
 			if (element != null) {
 				elements.add(element);
 			} else {
-				throw new IllegalArgumentException("The object identified by '" + id
-				        + "' could not be found in database. The parent or encompassing object referencing the following list was therefore not created/updated: ["
-				        + listString + "].");
+				throw new IllegalArgumentException(
+				        "The object identified by '"
+				                + id
+				                + "' could not be found in database. The parent or encompassing object referencing the following list was therefore not created/updated: ["
+				                + listString + "].");
 			}
 		}
 		

@@ -163,9 +163,9 @@ public class Utils {
 	/**
 	 * @param mapping The drug mapping, eg. "cambodia:123"
 	 * @param service
-	 * @return The {@link org.openmrs.Drug} instance that has a SAME-AS mapping to the given source nad
-	 *         code, or null. This will return null if the reference source is not found, and the
-	 *         SAME-AS concept map type is not found
+	 * @return The {@link org.openmrs.Drug} instance that has a SAME-AS mapping to the given source
+	 *         nad code, or null. This will return null if the reference source is not found, and
+	 *         the SAME-AS concept map type is not found
 	 */
 	public static Drug getDrugByMapping(String mapping, ConceptService service) {
 		Drug instance = null;
@@ -194,7 +194,8 @@ public class Utils {
 	}
 	
 	/**
-	 * Fetches a ConceptSource, trying to match "id" on name, then hl7Code, then uniqueId, then uuid,
+	 * Fetches a ConceptSource, trying to match "id" on name, then hl7Code, then uniqueId, then
+	 * uuid,
 	 * 
 	 * @param id the source lookup
 	 * @param service the ConceptService
@@ -607,8 +608,8 @@ public class Utils {
 	
 	/**
 	 * @param property the system property or runtime property to lookup
-	 * @return the system property value if a system property with the passed property name exists, the
-	 *         runtime property value otherwise
+	 * @return the system property value if a system property with the passed property name exists,
+	 *         the runtime property value otherwise
 	 */
 	public static String getPropertyValue(String property) {
 		return getPropertyValue(property, null);
@@ -617,8 +618,8 @@ public class Utils {
 	/**
 	 * @param property the system property or runtime property to lookup
 	 * @param defaultValue the default value to return if the property is not set
-	 * @return the system property value if a system property with the passed property name exists, the
-	 *         runtime property value otherwise
+	 * @return the system property value if a system property with the passed property name exists,
+	 *         the runtime property value otherwise
 	 */
 	public static String getPropertyValue(String property, String defaultValue) {
 		if (System.getProperties().containsKey(property)) {
@@ -628,8 +629,8 @@ public class Utils {
 	}
 	
 	/**
-	 * Concatenates the {@link Object#toString()} representation of each object of an array or "null"
-	 * string if object is null, and use it as a seed to generate a UUID.
+	 * Concatenates the {@link Object#toString()} representation of each object of an array or
+	 * "null" string if object is null, and use it as a seed to generate a UUID.
 	 * 
 	 * @param args An array of {@link Object}.
 	 * @return The generated UUID.

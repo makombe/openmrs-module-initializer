@@ -479,13 +479,11 @@ public class ConceptsLoaderIntegrationTest extends DomainBaseModuleContextSensit
 		green = cs.getConceptByUuid("61214827-303f-11ec-8d2b-0242ac110002");
 		Assert.assertEquals(4, green.getNames(true).size());
 		assertName(green, "Green", localeEn, true, fsn);
-		Assert.assertEquals(
-		    Utils.generateUuidFromObjects(CONCEPT_NAME_NAMESPACE_UUID, green.getUuid(), "Green", fsn, localeEn),
-		    green.getName(localeEn).getUuid());
+		Assert.assertEquals(Utils.generateUuidFromObjects(CONCEPT_NAME_NAMESPACE_UUID, green.getUuid(), "Green", fsn,
+		    localeEn), green.getName(localeEn).getUuid());
 		assertName(green, "Verde", localeEs, true, fsn);
-		Assert.assertEquals(
-		    Utils.generateUuidFromObjects(CONCEPT_NAME_NAMESPACE_UUID, green.getUuid(), "Verde", fsn, localeEs),
-		    green.getName(localeEs).getUuid());
+		Assert.assertEquals(Utils.generateUuidFromObjects(CONCEPT_NAME_NAMESPACE_UUID, green.getUuid(), "Verde", fsn,
+		    localeEs), green.getName(localeEs).getUuid());
 		
 		// Yellow is an existing Concept with 2 names, with Yellow as the FSN, and Lemon as a synonym
 		// In the CSV:

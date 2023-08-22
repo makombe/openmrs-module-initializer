@@ -35,10 +35,10 @@ public abstract class BaseFileLoader extends BaseLoader {
 	}
 	
 	/**
-	 * Performs pre-loading operations with the file, such as extracting or computing data from the file
-	 * that needs to be stored in memory rather than being persisted. IMPORTANT: this method will run on
-	 * the file even if its checksum file says that the file should not be processed anymore. This is
-	 * because the outcome of the pre-loader is transient by design.
+	 * Performs pre-loading operations with the file, such as extracting or computing data from the
+	 * file that needs to be stored in memory rather than being persisted. IMPORTANT: this method
+	 * will run on the file even if its checksum file says that the file should not be processed
+	 * anymore. This is because the outcome of the pre-loader is transient by design.
 	 * 
 	 * @param file The file to be pre-loaded.
 	 * @return The original file, untouched.
@@ -54,8 +54,7 @@ public abstract class BaseFileLoader extends BaseLoader {
 			log.error(e.getMessage());
 			if (doThrow) {
 				log.error(
-				    "The pre-loading of the '" + getDomainName() + "' configuration file was aborted:\n" + file.getPath(),
-				    e);
+				    "The pre-loading of the '" + getDomainName() + "' configuration file was aborted:\n" + file.getPath(), e);
 				throw new RuntimeException(e);
 			}
 		}
@@ -63,12 +62,12 @@ public abstract class BaseFileLoader extends BaseLoader {
 	}
 	
 	/**
-	 * If the loader is fitted with a pre-loader, this method provides control on whether the pre-loader
-	 * should throw on error or is allowed to fail.
+	 * If the loader is fitted with a pre-loader, this method provides control on whether the
+	 * pre-loader should throw on error or is allowed to fail.
 	 * 
 	 * @param doThrow Says whether Initializer is configured to throw on error or not.
-	 * @return true if the loader's pre-loader should throw on error, false if the loader's pre-loader
-	 *         is allowed to fail.
+	 * @return true if the loader's pre-loader should throw on error, false if the loader's
+	 *         pre-loader is allowed to fail.
 	 */
 	protected boolean throwingOnPreload(boolean doThrow) {
 		return doThrow;
@@ -89,8 +88,8 @@ public abstract class BaseFileLoader extends BaseLoader {
 			        catch (Exception e) {
 				        log.error(e.getMessage());
 				        if (doThrow) {
-					        log.error("The loading of the '" + getDomainName() + "' configuration file was aborted:\n"
-					                + file.getPath(),
+					        log.error("The loading of the ====================== '" + getDomainName()
+					                + "' configuration file was aborted:\n" + file.getPath(),
 					            e);
 					        throw new RuntimeException(e);
 				        }

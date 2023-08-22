@@ -59,8 +59,8 @@ public class ConfigDirUtil {
 	protected String domainChecksumsDirPath = "";
 	
 	/**
-	 * Instantiates a configuration directory utility class for the specified configuration and checksum
-	 * files directories and for the specified domain.
+	 * Instantiates a configuration directory utility class for the specified configuration and
+	 * checksum files directories and for the specified domain.
 	 * 
 	 * @param configDirPath The absolute path to the configuration directory.
 	 * @param checksumsDirPath The absolute path to the checksum files directory.
@@ -113,24 +113,25 @@ public class ConfigDirUtil {
 	/**
 	 * The located file name is a name that encodes the location of the file relative to the
 	 * configuration directory. Eg. "../configuration/domain/level1/level2/config.xml" has a located
-	 * file name "level1_level2_config" (so as a based file name, without an extension). Located file
-	 * names are used to generate checksum file names so that they can all live at the same level in the
-	 * checksum files folder.
+	 * file name "level1_level2_config" (so as a based file name, without an extension). Located
+	 * file names are used to generate checksum file names so that they can all live at the same
+	 * level in the checksum files folder.
 	 * 
 	 * @param domainDirPath The absolute path to the domain, eg. "../configuration/domain"
 	 * @param file The configuration file nested somewhere in the domain directory.
 	 * @return The located file name.
 	 */
 	public static String getLocatedFilename(String domainDirPath, File file) {
-		return FilenameUtils
-		        .removeExtension(Paths.get(domainDirPath).relativize(file.toPath()).toString().replace(File.separator, "_"));
+		return FilenameUtils.removeExtension(Paths.get(domainDirPath).relativize(file.toPath()).toString()
+		        .replace(File.separator, "_"));
 	}
 	
 	/**
-	 * Returns the checksum of a configuration file if the file has been changed since the last time a
-	 * checksum was saved.
+	 * Returns the checksum of a configuration file if the file has been changed since the last time
+	 * a checksum was saved.
 	 * 
-	 * @param domainDirPath The absolute path to the domain directory, eg. "../configuration/locations"
+	 * @param domainDirPath The absolute path to the domain directory, eg.
+	 *            "../configuration/locations"
 	 * @param checksumsDirPath The absolute path to the checksum files directory, eg.
 	 *            "../configuration_checksums"
 	 * @param configFile The config file.
@@ -246,7 +247,8 @@ public class ConfigDirUtil {
 	/**
 	 * Compute the checksum of a configuration file.
 	 * 
-	 * @param domainDirPath The absolute path to the domain directory, eg. "../configuration/locations"
+	 * @param domainDirPath The absolute path to the domain directory, eg.
+	 *            "../configuration/locations"
 	 * @param configFileName The config file name, eg. "locations.csv"
 	 * @return The checksum of the file.
 	 */
@@ -271,8 +273,8 @@ public class ConfigDirUtil {
 	/**
 	 * Writes the the checksum of a configuration file into the corresponding checksum file.
 	 * 
-	 * @param domainChecksumsDirPath The absolute path to the checksum files directory for a domain, eg.
-	 *            "../configuration_checksums/locations"
+	 * @param domainChecksumsDirPath The absolute path to the checksum files directory for a domain,
+	 *            eg. "../configuration_checksums/locations"
 	 * @param checksumFilename The checksum file name inside the domain checksums files directory.
 	 * @param checksum The checksum hash of the configuration file.
 	 */
@@ -306,8 +308,8 @@ public class ConfigDirUtil {
 	/**
 	 * Removes the specified checksum file in the specified checksums directory.
 	 * 
-	 * @param domainChecksumsDirPath The absolute path to the checksum files directory for a domain, eg.
-	 *            "../configuration_checksums/locations"
+	 * @param domainChecksumsDirPath The absolute path to the checksum files directory for a domain,
+	 *            eg. "../configuration_checksums/locations"
 	 * @param checksumFilename The checksum file name inside the domain checksums files directory.
 	 */
 	protected static void deleteChecksumFile(String domainChecksumsDirPath, String checksumFilename) {

@@ -37,8 +37,8 @@ public class DisplaysCsvParserTest {
 	@Test
 	public void bootstrap_shouldBootstrapObjectGivenUuidPresentAndObjectNotVoid() {
 		// Setup
-		CsvLine line = new CsvLine(new String[] { "uuid", "void/retire" },
-		        new String[] { "d9e04a9d-d534-4a02-9c40-1c173f3d1d4b", "False" });
+		CsvLine line = new CsvLine(new String[] { "uuid", "void/retire" }, new String[] {
+		        "d9e04a9d-d534-4a02-9c40-1c173f3d1d4b", "False" });
 		
 		// Replay
 		OpenmrsObject obj = displayParser.bootstrap(line);

@@ -119,8 +119,8 @@ public interface InitializerService extends OpenmrsService {
 	InitializerConfig getInitializerConfig();
 	
 	/**
-	 * Returns non-retired unique concepts whose fully specified name exactly matches the supplied name
-	 * in any locale
+	 * Returns non-retired unique concepts whose fully specified name exactly matches the supplied
+	 * name in any locale
 	 * 
 	 * @param name The search string
 	 * @return the found Concepts

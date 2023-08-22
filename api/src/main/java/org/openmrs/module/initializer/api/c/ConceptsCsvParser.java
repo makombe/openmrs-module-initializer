@@ -61,8 +61,8 @@ public class ConceptsCsvParser extends CsvParser<Concept, BaseLineProcessor<Conc
 		
 		if (StringUtils.isEmpty(uuid) && concept == null) {
 			Locale currentLocale = Context.getLocale();
-			LocalizedHeader lh = LocalizedHeader.getLocalizedHeader(line.getHeaderLine(),
-			    ConceptLineProcessor.HEADER_FSNAME);
+			LocalizedHeader lh = LocalizedHeader
+			        .getLocalizedHeader(line.getHeaderLine(), ConceptLineProcessor.HEADER_FSNAME);
 			for (Locale nameLocale : lh.getLocales()) {
 				String name = line.get(lh.getI18nHeader(nameLocale));
 				if (!StringUtils.isEmpty(name)) {

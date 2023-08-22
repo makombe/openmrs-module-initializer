@@ -64,8 +64,8 @@ public class MappingsDrugLineProcessor extends DrugLineProcessor {
 						String source = headerComponents[2].trim();
 						conceptSource = Utils.fetchConceptSource(source, conceptService);
 						if (conceptSource == null) {
-							throw new IllegalArgumentException(
-							        "Unable to find concept source '" + source + "' defined in header '" + header + "'");
+							throw new IllegalArgumentException("Unable to find concept source '" + source
+							        + "' defined in header '" + header + "'");
 						}
 					}
 					

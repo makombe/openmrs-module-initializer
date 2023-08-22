@@ -19,7 +19,8 @@ public class LocationsCsvParser extends CsvParser<Location, BaseLineProcessor<Lo
 	private LocationAttributeLineProcessor locationAttributeLineProcessor;
 	
 	@Autowired
-	public LocationsCsvParser(@Qualifier("locationService") LocationService locationService,
+	public LocationsCsvParser(
+	    @Qualifier("locationService") LocationService locationService,
 	    @Qualifier("initializer.locationLineProcessor") LocationLineProcessor baseProcessor,
 	    @Qualifier("initializer.locationAttributeLineProcessor") LocationAttributeLineProcessor locationAttributeLineProcessor) {
 		super(baseProcessor);

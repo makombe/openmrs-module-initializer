@@ -46,9 +46,9 @@ public class AttributeTypesProxyServiceImpl implements AttributeTypesProxyServic
 		instance = save(instance);
 		
 		if (instance.getId() == null) {
-			log.info(
-			    getClass().getSimpleName() + " does not support the attribute type '" + instance.getClass().getSimpleName()
-			            + "'.\nThe supported attribute types for this implementation are '" + getSupportedTypes() + "'.");
+			log.info(getClass().getSimpleName() + " does not support the attribute type '"
+			        + instance.getClass().getSimpleName()
+			        + "'.\nThe supported attribute types for this implementation are '" + getSupportedTypes() + "'.");
 		}
 		
 		return instance;

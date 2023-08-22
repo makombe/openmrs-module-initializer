@@ -49,8 +49,8 @@ public class ProgramsLoaderIntegrationTest extends DomainBaseModuleContextSensit
 		{
 			Concept c = new Concept();
 			c.setShortName(new ConceptName("Oncology Program", Locale.ENGLISH));
-			c.addDescription(
-			    new ConceptDescription("A regular oncology program with traditional chimotherapy.", Locale.ENGLISH));
+			c.addDescription(new ConceptDescription("A regular oncology program with traditional chimotherapy.",
+			        Locale.ENGLISH));
 			c.setConceptClass(cs.getConceptClassByName("Program"));
 			c.setDatatype(cs.getConceptDatatypeByName("Text"));
 			c = cs.saveConcept(c);

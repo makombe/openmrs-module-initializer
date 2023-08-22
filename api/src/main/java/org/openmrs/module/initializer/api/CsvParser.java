@@ -44,8 +44,8 @@ public abstract class CsvParser<T extends OpenmrsObject, LP extends BaseLineProc
 	protected String[] line = new String[0];
 	
 	/**
-	 * Most CSV parsers are built on a single line processor. This superclass constructor should be used
-	 * to initialize such parsers.
+	 * Most CSV parsers are built on a single line processor. This superclass constructor should be
+	 * used to initialize such parsers.
 	 * 
 	 * @param lineProcessor The single line processor for the CSV parser.
 	 */
@@ -59,8 +59,8 @@ public abstract class CsvParser<T extends OpenmrsObject, LP extends BaseLineProc
 	
 	/**
 	 * Each parser must know how to bootstrap an instance from a CSV line. Bootstrapping means
-	 * attempting to load an instance based on its identifiers provided through the CSV line (such as
-	 * UUID or name), and if no instance can be loaded a new instance must be provided.
+	 * attempting to load an instance based on its identifiers provided through the CSV line (such
+	 * as UUID or name), and if no instance can be loaded a new instance must be provided.
 	 * 
 	 * @param line The CSV line.
 	 * @return The bootstrapped instance.
@@ -258,7 +258,8 @@ public abstract class CsvParser<T extends OpenmrsObject, LP extends BaseLineProc
 	}
 	
 	/**
-	 * @return true by default, or false for existing instances that are marked to be retired/voided.
+	 * @return true by default, or false for existing instances that are marked to be
+	 *         retired/voided.
 	 */
 	protected boolean shouldFill(T instance, CsvLine csvLine) {
 		boolean isVoidedOrRetired = BaseLineProcessor.getVoidOrRetire(csvLine);

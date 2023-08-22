@@ -43,7 +43,7 @@ public class IdentifierSourcesCsvParser extends CsvParser<IdgenSourceWrapper, Ba
 	protected IdentifierSource newIdentifierSource(CsvLine line) throws IllegalArgumentException {
 		
 		switch (IdentifierSourceLineProcessor.getIdentifierSourceType(line)) {
-			
+		
 			case POOL:
 				return new IdentifierPool();
 			case REMOTE:
@@ -51,8 +51,8 @@ public class IdentifierSourcesCsvParser extends CsvParser<IdgenSourceWrapper, Ba
 			case SEQUENTIAL:
 				return new SequentialIdentifierGenerator();
 			default:
-				throw new IllegalArgumentException(
-				        "No identifier source type could be guessed from the CSV line: '" + line.toString() + "'.");
+				throw new IllegalArgumentException("No identifier source type could be guessed from the CSV line: '"
+				        + line.toString() + "'.");
 				
 		}
 	}

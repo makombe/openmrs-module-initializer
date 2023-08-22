@@ -88,8 +88,8 @@ public class InitializerServiceImplTest {
 	@Test
 	public void addKeyValues_shouldFillKeyValuesCache() throws Exception {
 		
-		InputStream is = getClass().getClassLoader()
-		        .getResourceAsStream("org/openmrs/module/initializer/include/jsonKeyValues.json");
+		InputStream is = getClass().getClassLoader().getResourceAsStream(
+		    "org/openmrs/module/initializer/include/jsonKeyValues.json");
 		iniz.addKeyValues(is);
 		
 		Assert.assertEquals("value1", iniz.getValueFromKey("key1"));

@@ -49,8 +49,8 @@ public class OrderTypeLineProcessor extends BaseLineProcessor<OrderType> {
 		
 		String conceptClassesStr = line.getString(HEADER_CONCEPT_CLASSES, "");
 		if (!StringUtils.isEmpty(conceptClassesStr)) {
-			orderType.setConceptClasses(
-			    new HashSet<ConceptClass>(conceptClassListParser.parseList(line.get(HEADER_CONCEPT_CLASSES))));
+			orderType.setConceptClasses(new HashSet<ConceptClass>(conceptClassListParser.parseList(line
+			        .get(HEADER_CONCEPT_CLASSES))));
 		}
 		
 		return orderType;

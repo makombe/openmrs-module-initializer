@@ -27,8 +27,8 @@ public class FhirPatientIdentifierSystemLineProcessor extends BaseLineProcessor<
 		// The Bootstrap method of the FhirPatientIdentifierSystemCsvParser should set the Identifier Type.
 		// If this has not happened, throw an exception
 		if (instance.getPatientIdentifierType() == null) {
-			throw new IllegalArgumentException(
-			        "patient identifier type is missing from FHIR concept source " + instance.getUuid());
+			throw new IllegalArgumentException("patient identifier type is missing from FHIR concept source "
+			        + instance.getUuid());
 		}
 		instance.setName(instance.getPatientIdentifierType().getName());
 		

@@ -46,8 +46,8 @@ public class DeleteDomainChecksumsChangeset implements CustomTaskChange {
 		catch (IllegalArgumentException e) {
 			throw new IllegalArgumentException("'" + getDomainName() + "' is not a valid domain name.", e);
 		}
-		String checksumsDirPath = Paths
-		        .get(OpenmrsUtil.getApplicationDataDirectory(), InitializerConstants.DIR_NAME_CHECKSUM).toString();
+		String checksumsDirPath = Paths.get(OpenmrsUtil.getApplicationDataDirectory(),
+		    InitializerConstants.DIR_NAME_CHECKSUM).toString();
 		
 		ConfigDirUtil util = new ConfigDirUtil(null, checksumsDirPath, domain.getName());
 		util.deleteChecksums();

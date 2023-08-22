@@ -36,8 +36,8 @@ public class AppointmentServiceTypeLineProcessor extends BaseLineProcessor<Appoi
 		type.setName(line.get(HEADER_NAME, true));
 		type.setDuration(line.getInt(HEADER_DURATION));
 		
-		AppointmentServiceDefinition def = Utils
-		        .fetchBahmniAppointmentServiceDefinition(line.getString(HEADER_SERVICE_DEFINITION), service);
+		AppointmentServiceDefinition def = Utils.fetchBahmniAppointmentServiceDefinition(
+		    line.getString(HEADER_SERVICE_DEFINITION), service);
 		Set<AppointmentServiceType> types = def.getServiceTypes();
 		types.add(type);
 		def.setServiceTypes(types);

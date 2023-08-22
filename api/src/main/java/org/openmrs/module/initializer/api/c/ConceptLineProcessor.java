@@ -212,8 +212,8 @@ public class ConceptLineProcessor extends BaseLineProcessor<Concept> {
 	
 	/**
 	 * Given a CsvLine, this method returns all of the headers that refer to actual ConceptName.name
-	 * values These are used both to retrieve the text for each ConceptName directly, and as a prefix
-	 * for related attributes.
+	 * values These are used both to retrieve the text for each ConceptName directly, and as a
+	 * prefix for related attributes.
 	 */
 	protected List<String> getConceptNameHeaders(CsvLine line) {
 		List<String> headers = new ArrayList<>();
@@ -232,12 +232,13 @@ public class ConceptLineProcessor extends BaseLineProcessor<Concept> {
 	}
 	
 	/**
-	 * @return a new ConceptName instance for the given nameHeader If the passed nameHeader is "fully
-	 *         specified name:en", this will construct the concept name from fully specified name:en +
-	 *         fully specified name:en:preferred + fully specified name:en:uuid The preferred and uuid
-	 *         values are optional, if not supplied then preferred will default to false, and the uuid
-	 *         will be generated in a deterministic fashion based on name, locale, and type, which
-	 *         enables future updates to concept names to match, even if not explicit uuid is supplied
+	 * @return a new ConceptName instance for the given nameHeader If the passed nameHeader is
+	 *         "fully specified name:en", this will construct the concept name from fully specified
+	 *         name:en + fully specified name:en:preferred + fully specified name:en:uuid The
+	 *         preferred and uuid values are optional, if not supplied then preferred will default
+	 *         to false, and the uuid will be generated in a deterministic fashion based on name,
+	 *         locale, and type, which enables future updates to concept names to match, even if not
+	 *         explicit uuid is supplied
 	 */
 	protected ConceptName constructConceptName(Concept concept, CsvLine line, String nameHeader) {
 		ConceptName cn = null;
@@ -259,8 +260,8 @@ public class ConceptLineProcessor extends BaseLineProcessor<Concept> {
 	}
 	
 	/**
-	 * Iterates over all specified concept names and ensures that locale preferred is set on one concept
-	 * per locale
+	 * Iterates over all specified concept names and ensures that locale preferred is set on one
+	 * concept per locale
 	 */
 	protected void ensureLocalPreferredConfigured(List<ConceptName> conceptNames) {
 		Map<Locale, ConceptName> localePreferredNames = new HashMap<>();
